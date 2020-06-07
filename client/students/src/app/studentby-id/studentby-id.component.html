@@ -1,0 +1,19 @@
+<div class="container col-sm-6 text-center">
+    <form FormGroup="myForm" (ngSubmit)="sendRequest(myForm)">
+        <div class="form-group">
+            <label class="h4">Issue:</label>
+            <input class="form-control" placeholder="Issuse of Payment" [formControl]="myForm.controls['Issue']">
+        </div>
+        <div class="form-group">
+            <label class="h4">Amount</label>
+            <input class="form-control" placeholder="amount" [formControl]="myForm.controls['amount']">
+        </div>
+        <div class="form-group">
+            <label class="h4">Paymentid</label>
+            <input class="form-contol" placeholder="Payment id" [formControl]="myForm.controls['PaymentId']">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning px-7" >Save</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+<div class="container mt-5 text-center offset-sm-2">
+    <div class="card">
+        <div class="card-border-0">
+            <div class="card-header text-center">
+                <label class="h4">Login</label>
+            </div>
+            <div class="card-body text-center">
+                <div class="form-group">
+                    <label class="h6">Username:</label>
+                    <input type="text" class="form-control" [(ngModel)]="username">
+                </div>
+                <div class="form-group">
+                    <label class="h6">Password:</label>
+                    <input type="text" class="form-control" [(ngModel)]="password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-warning btn-primary-success" (click)="SignIn(username,password)">Signin</button>
+                </div>
+            </div>
+        </div>    
+    </div>
+</div>

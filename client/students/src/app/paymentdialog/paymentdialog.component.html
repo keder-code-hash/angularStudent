@@ -1,0 +1,16 @@
+<div class="container col-sm-8">
+    <label>Paymentid:{{data.id}}</label>
+    <form [formGroup]="myForm" (ngSubmit)="payment(myForm)">
+        <div class="form-group">
+            <label>PaymentTime</label>
+            <input type="text" class="form-control" formControlName="time">
+        </div>
+        <div class="form-group">
+            <label>Payment Doc.</label>
+            <input type="text" class="form-control" formControlName="paymentDoc">
+        </div>
+        <div class="form-group text-center">
+            <button class="btn btn-warning btn-primary-success">Submit</button>
+        </div>
+    </form>
+</div>

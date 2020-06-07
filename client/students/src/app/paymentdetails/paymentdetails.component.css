@@ -1,0 +1,8 @@
+table{
+    width:80vw;
+    border-radius:auto;
+    border-style: solid;
+}
+button.btn{
+    border-radius: 50px;
+}

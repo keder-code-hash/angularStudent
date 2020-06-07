@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item-right" *ngIf="!studentloggedIn" routerlinkActive="active" data-toggle="collapse" data-target=".navbar-collapse">
+                <button class="btn btn-outline-light px-5" routerLink='/slogin'>Login</button>
+            </li>
+            <li class="nav-item-right" *ngIf="studentloggedIn" data-toggle="collapse" data-target=".navbar-collapse">
+                <button class="btn btn-outline-light px-5"(click)="logOut()">Logout</button>
+            </li>
+            <li class="nav-item" *ngIf="studentloggedIn" routerlinkActive="active" data-toggle="collapse" data-target=".navbar-collapse">
+                <button class="btn btn-outline-light px-5"routerLink="/myprofile">myprofile</button>
+            </li>
+            <li class="nav-item" *ngIf="studentloggedIn" routerlinkActive="active" data-toggle="collapse" data-target=".navbar-collapse">
+                <button class="btn btn-outline-light px-5"routerLink="/payment">payment</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-3">
+    <div class="card text-center offset-col-sm-4">
+        <div class="card-border-0">
+            <div class="card-body">
+                <ul>
+                    <li><h2>Personal Details</h2></li>
+                    <li><h2>Fees Details</h2></li>
+                    <li><h2>Payment History</h2></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<h5>All students</h5>
+<div *ngFor="let student of students">
+    <h4>{{student.name}}</h4>
+</div>
