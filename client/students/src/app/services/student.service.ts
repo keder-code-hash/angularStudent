@@ -27,6 +27,7 @@ export class StudentService {
   allpaymentsUrl="http://localhost:8080/allPayments";
   updatePaymentsUrl="http://localhost:8080/updatePayment";
   insertPaymentUrl="http://localhost:8080/insertpayment";
+  cashierloginUrl="http://localhost:8080/cashierlogin";
   constructor(private http:HttpClient,private router:Router,private tokenstorage:TokenService)
   {
 
@@ -63,5 +64,9 @@ export class StudentService {
   paymentCreate(data):Observable<any>
   {
     return this.http.put<any>(this.insertPaymentUrl,data);
+  }
+  cashierlogin(data):Observable<any>
+  {
+    return this.http.post<any>(this.cashierloginUrl,data,httpOption);
   }
 }

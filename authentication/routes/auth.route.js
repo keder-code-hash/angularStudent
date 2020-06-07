@@ -11,4 +11,5 @@ module.exports = function(app) {
   });*/
   app.post("/adminLogin",controller.adminLogin)
   app.post("/api/auth/signin",controller.signin);
+  app.post("/cashierlogin",controller.cashierlogin);
 };

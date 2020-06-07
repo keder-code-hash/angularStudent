@@ -226,3 +226,39 @@ exports.insertPayment=(req,res,next)=>
     res.send("success!!");
   })
 }
+exports.cashierlogin=(req,res,next)=>
+{
+  User.table.findOne({
+    where: {
+      authid:req.body.username
+
+    }
+  }).then(user=>
+    {
+      if(!user)
+      {
+        res.send({messege:"user does not exist"})
+      }
+      if(user.authpass==req.body.password)
+      {
+        var passwordIsValid=true;
+      }
+      else{
+        var passwordIsValid=false;
+      }
+      if(passwordIsValid==true)
+      {
+        var token=jwt.sign({ id: user.authid },config.secret,{
+          expiresIn:86400
+        })
+      next()
+      {
+        if(user.userrole=="cashier")
+          {res.send({token})}
+        else{
+          res.status(404).send({messege:"check your credential"});
+        }
+      }
+      }
+    })
+}

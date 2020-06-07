@@ -29,6 +29,9 @@ import { AdminpaymentComponent } from './adminpayment/adminpayment.component';
 //import { PaymentRequestComponent } from './payment-request/payment-request.component';
 import { PayrequestComponent } from './payrequest/payrequest.component';
 import { StudentbyIdComponent } from './studentby-id/studentby-id.component';
+import { CashierpaymentrecordComponent } from './cashierpaymentrecord/cashierpaymentrecord.component';
+import { CashierloginComponent } from './cashierlogin/cashierlogin.component';
+import { CpConfirmationComponent } from './cp-confirmation/cp-confirmation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +47,10 @@ import { StudentbyIdComponent } from './studentby-id/studentby-id.component';
     AdminsdetailsComponent,
     AdminpaymentComponent,
     PayrequestComponent,
-    StudentbyIdComponent
+    StudentbyIdComponent,
+    CashierpaymentrecordComponent,
+    CashierloginComponent,
+    CpConfirmationComponent
   ],
   imports: [
     BrowserModule,

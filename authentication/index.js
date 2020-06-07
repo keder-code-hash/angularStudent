@@ -25,9 +25,11 @@ app.get("/", (req, res) => {
 });
 
 // routes
+require('./routes/cashier.auth.route')(app);
 require('./routes/admin.auth.route')(app);
 require('./routes/user.route')(app);
 require('./routes/auth.route')(app);
+//require('./routes/cashier.auth.route')(app);
 //require('./routes/user.route')(app);
 
 // set port, listen for requests

@@ -1,0 +1,15 @@
+<div class="container offset-sm-1 col-sm-8 text-center">
+    <form FormGroup="myForm" (ngSubmit)="Signin(myForm)">
+        <div class="form-group">
+            <label class="h6">Username:</label>
+            <input type="text" class="form-control" placeholder="username" [formControl]="myForm.controls['username']">
+        </div>
+        <div class="form-group">
+            <label class="h6">Password:</label>
+            <input type="text" class="form-control" placeholder="password" [formControl]="myForm.controls['password']">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning btn-primary-success px-7">SignIn</button>
+        </div>
+    </form>
+</div>
