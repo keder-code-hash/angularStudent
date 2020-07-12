@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
     "bootstrap": "^4.5.0",
+    "igniteui-angular": "^10.0.3",
     "jquery": "^3.5.1",
     "material": "^0.4.3",
     "ng-pick-datetime": "^7.0.0",

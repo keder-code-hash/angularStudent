@@ -1,0 +1,12 @@
+<div class="container offset-sm-1 col-sm-8 text-center">
+    <form FormGroup="myForm" (ngSubmit)="Save(myForm)">
+        <div class="form-group">
+            <label class="h6">Issue:</label>
+            <mat-form-field>
+                <mat-select [(value)]="myForm.controls['issue']">
+                    <mat-option *ngFor="let item of items" [value]="item.field">{{item.field}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+</div>

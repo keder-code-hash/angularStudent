@@ -9,7 +9,7 @@ module.exports = function(app) {
     );
     next();
   });*/
-  app.post("/adminLogin",controller.adminLogin)
+  //app.post("/adminLogin",controller.adminLogin)
   app.post("/api/auth/signin",controller.signin);
-  app.post("/cashierlogin",controller.cashierlogin);
+  //app.post("/cashierlogin",controller.cashierlogin);
 };

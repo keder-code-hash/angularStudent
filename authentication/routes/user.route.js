@@ -17,4 +17,7 @@ module.exports=function(app)
     app.put("/updatePayment",controller.updatePayment);
     app.get("/getStudentsById",controller.studentbyId);
     app.put("/insertpayment",controller.insertPayment);
+    app.get("/cashierPay",controller.conPayment);
+    app.put("/cashierHist",controller.cashierHist);
+    app.get("/getcashier",controller.getcashier)
 };

@@ -32,6 +32,8 @@ import { StudentbyIdComponent } from './studentby-id/studentby-id.component';
 import { CashierpaymentrecordComponent } from './cashierpaymentrecord/cashierpaymentrecord.component';
 import { CashierloginComponent } from './cashierlogin/cashierlogin.component';
 import { CpConfirmationComponent } from './cp-confirmation/cp-confirmation.component';
+import { IssuerequestComponent } from './issuerequest/issuerequest.component';
+import {MatSelectModule,MatFormFieldModule,MatInputModule} from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,8 @@ import { CpConfirmationComponent } from './cp-confirmation/cp-confirmation.compo
     StudentbyIdComponent,
     CashierpaymentrecordComponent,
     CashierloginComponent,
-    CpConfirmationComponent
+    CpConfirmationComponent,
+    IssuerequestComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +67,10 @@ import { CpConfirmationComponent } from './cp-confirmation/cp-confirmation.compo
     MatDialogModule,
     MatDatepickerModule,
     OwlDateTimeModule, 
-    OwlNativeDateTimeModule
+    OwlNativeDateTimeModule,
+    // MatSelectModule,
+    // MatFormFieldModule,
+    // MatInputModule
   ],
   entryComponents: [
     PaymentdialogComponent

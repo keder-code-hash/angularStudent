@@ -29,11 +29,10 @@ const routes:Routes=[
   {path:"studentDetails",component:AdminsdetailsComponent},
   {path:"paymentRequest",component:PayrequestComponent},
   {path:"cashierlogin",component:CashierloginComponent},
-  {path:'PaymentConfirmation',component:CashierpaymentrecordComponent},
-  {path:"cashierpaymentRecord",component:CpConfirmationComponent},
+  {path:'cashierpaymentRecord',component:CashierpaymentrecordComponent},
+  {path:"PaymentConfirmation",component:CpConfirmationComponent},
   {path:'**',redirectTo:'view'}
 ]
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

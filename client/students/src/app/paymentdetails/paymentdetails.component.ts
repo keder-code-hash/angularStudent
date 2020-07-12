@@ -38,6 +38,17 @@ export class PaymentdetailsComponent implements OnInit {
     const dialogRef=this.dialog.open(PaymentdialogComponent,{
       data:{id:id}
     });
+    var obj={
+      "paymentid":id,
+      "status":"awaiting"
+    };
+    this.payment.makeStudentpayment(obj).subscribe(data=>
+      {
+        console.log(data);
+      },err=>
+      {
+        console.log(err);
+      })
   }
   onSubmit()
   {}

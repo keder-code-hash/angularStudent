@@ -1,7 +1,9 @@
 const config = require("../config/auth.config");
 const User = require("../models/user.model");
 const jwt_decode=require("jwt-decode");
-const {QueryTypes}=require("sequelize")
+const {QueryTypes}=require("sequelize");
+const Sequelize=require('sequelize');
+const {or, and, gt, lt} = Sequelize.Op;
 var decode;
 var token;
 var jwt = require("jsonwebtoken");
@@ -20,13 +22,23 @@ exports.signin = (req, res,next) => {
       if(req.body.password==user.authpass)
       {
           var passwordIsValid=true;
-          var userrole=user.userrole;
+          token = jwt.sign({ id: user.authid }, config.secret, {
+            expiresIn: 86400
+          })
+          if(user.userrole=="student")
+          {
+            res.send({token});
+          }
       }
       else{
         var passwordIsValid=false;
+        return res.status(401).send({
+          accessToken: null,
+          message: "Invalid Password!"
+        });
       };
 
-      if (passwordIsValid==false) {
+      /*if (passwordIsValid==false) {
         return res.status(401).send({
           accessToken: null,
           message: "Invalid Password!"
@@ -43,7 +55,7 @@ exports.signin = (req, res,next) => {
           {
             res.send({token});
           }
-      }
+      }*/
     });
 };
 
@@ -132,15 +144,24 @@ exports.adminLogin=(req,res,next)=>
       if(req.body.password==user.authpass)
       {
         var passwordIsValid=true;
+        var token=jwt.sign({id:user.authid},config.secret,{
+          expiresIn:86400
+        })
+        if(user.userrole=="admin")
+        {
+          res.send({token})
+        }
+        else
+        {
+          res.send("please check yoy credential");
+        }
+
       }
       else{
         var passwordIsValid=fasle;
-      }
-      if(passwordIsValid==false)
-      {
         res.status(401).send({message:"password is invalid"})
       }
-      var token=jwt.sign({id:user.authid},config.secret,{
+      /*var token=jwt.sign({id:user.authid},config.secret,{
         expiresIn:86400
       })
 
@@ -154,7 +175,7 @@ exports.adminLogin=(req,res,next)=>
         {
           res.send("please check yoy credential");
         }
-      }
+      }*/
     })
 }
 exports.allpayments=(req,res,next)=>
@@ -176,10 +197,9 @@ exports.allpayments=(req,res,next)=>
 exports.updatePayment=(req,res,next)=>
   {
     let paymentid=req.body.paymentid;
-    let time=req.body.time;
+    let transid=req.body.transid;
     let status=req.body.status;
-    let Issue=req.body.event;
-    User.paymenttable.update({status:status,time:time,event:Issue},{where:{paymentid:paymentid}}).then(()=>
+    User.paymenttable.update({status:status},{where:{paymentid:paymentid}}).then(()=>
       {
         res.send("updated successfully");
       }).catch(err=>
@@ -205,7 +225,7 @@ exports.studentbyId=(req,res,next)=>
         {
           res.send("Error:"+err);
         })
-  }
+}
 exports.insertPayment=(req,res,next)=>
 {
   var ctime=time.getHours()+":"+time.getMinutes()+":"+time.getSeconds()
@@ -242,23 +262,73 @@ exports.cashierlogin=(req,res,next)=>
       if(user.authpass==req.body.password)
       {
         var passwordIsValid=true;
-      }
-      else{
-        var passwordIsValid=false;
-      }
-      if(passwordIsValid==true)
-      {
         var token=jwt.sign({ id: user.authid },config.secret,{
           expiresIn:86400
         })
-      next()
-      {
         if(user.userrole=="cashier")
           {res.send({token})}
         else{
           res.status(404).send({messege:"check your credential"});
         }
       }
+      else{
+        var passwordIsValid=false;
+        res.status(401).send({message:"password is invalid"});
       }
+    })
+}
+
+exports.conPayment=(req,res,next)=>
+{
+  User.paymenttable.findAll({
+    where:
+    {
+      [or]:[{status:"awaiting"},{status:"pending"}]
+    }
+  }).then(user=>
+    {
+      if(user)
+      {
+        res.send(user)
+      }
+      else{
+        res.status(404).send({message:"not found!"})
+      }
+    }).catch(err=>
+      {
+        res.send(err)
+      })
+}
+exports.cashierHist=(req,res,next)=>
+{
+  var cashierid=jwt_decode(req.body.cashierid)
+  User.cashiertable.create({
+    paymentid:req.body.paymentid,
+    transid:req.body.transid,
+    cashierid:cashierid.id,
+    studentid:req.body.studentid,
+    studentname:req.body.studentname
+  }).then((user)=>
+  {
+    res.send({message:"successfully inserted"})
+  }).catch(err=>
+    {
+      res.status(400).send(err)
+    })
+}
+exports.getcashier=(req,res,next)=>
+{
+  User.cashiertable.findAll().then((user)=>
+  {
+    if(user)
+    {
+      res.send(user)
+    }
+    else{
+      res.status(400).send(user)
+    }
+  }).catch(err=>
+    {
+      res.send(err);
     })
 }

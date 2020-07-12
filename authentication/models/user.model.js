@@ -72,10 +72,39 @@ let paymenttable=db.sequelize.define("payments",
   event:
   {
     type:Sequelize.STRING
+  },
+  transid:
+  {
+    type:Sequelize.STRING
+  }
+})
+let cashiertable=db.sequelize.define("cRecords",
+{
+  paymentid:
+  {
+    type:Sequelize.STRING
+  },
+  transid:
+  {
+    type:Sequelize.STRING
+  },
+  cashierid:
+  {
+    type:Sequelize.STRING,
+    primaryKey:true
+  },
+  studentid:
+  {
+    type:Sequelize.STRING
+  },
+  studentname:
+  {
+    type:Sequelize.STRING
   }
 })
 tables={}
 tables.table=table;
 tables.studenttable=studenttable;
-tables.paymenttable=paymenttable
+tables.paymenttable=paymenttable;
+tables.cashiertable=cashiertable;
 module.exports=tables;

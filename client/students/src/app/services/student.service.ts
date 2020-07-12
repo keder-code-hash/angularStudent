@@ -28,6 +28,10 @@ export class StudentService {
   updatePaymentsUrl="http://localhost:8080/updatePayment";
   insertPaymentUrl="http://localhost:8080/insertpayment";
   cashierloginUrl="http://localhost:8080/cashierlogin";
+  conpayUrl="http://localhost:8080/cashierPay";
+  cashierHistUrl="http://localhost:8080/cashierHist";
+  cashierUrl="http://localhost:8080/getcashier";
+  makeStudentpaymentUrl="http://localhost:8080/makeStudentPayment";
   constructor(private http:HttpClient,private router:Router,private tokenstorage:TokenService)
   {
 
@@ -68,5 +72,21 @@ export class StudentService {
   cashierlogin(data):Observable<any>
   {
     return this.http.post<any>(this.cashierloginUrl,data,httpOption);
+  }
+  conPayment():Observable<any>
+  {
+    return this.http.get<any>(this.conpayUrl);
+  }
+  cashierHistory(data):Observable<any>
+  {
+    return this.http.put<any>(this.cashierHistUrl,data);
+  }
+  getcashier():Observable<any>
+  {
+    return this.http.get<any>(this.cashierUrl);
+  }
+  makeStudentpayment(data):Observable<any>
+  {
+    return this.http.put(this.updatePaymentsUrl,data);
   }
 }

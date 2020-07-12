@@ -1,1 +1,24 @@
-<p>cashierpaymentrecord works!</p>
+<div class="container text-center">
+    <h1>Payment History</h1>
+  </div>
+  <div class="container offset-sm-1 mt-5 col-sm-8">
+    <table mat-table [dataSource]="paymentArray" #mytable class="my-table mat-elevation-z5">
+      <ng-container matColumnDef="paymentid">
+        <th mat-header-cell *matHeaderCellDef>PaymentId</th>
+        <td mat-cell *matCellDef="let element">{{element.paymentid}}</td>
+      </ng-container>
+      <ng-container matColumnDef="transid">
+        <th mat-header-cell *matHeaderCellDef>TransacId</th>
+        <td mat-cell *matCellDef="let element">{{element.transid}}</td>
+      </ng-container>
+      <ng-container matColumnDef="studentid">
+        <th mat-header-cell *matHeaderCellDef>StudentId</th>
+        <td mat-cell *matCellDef="let element">{{element.studentid}}</td>
+      </ng-container>
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Time</th>
+        <td mat-cell *matCellDef="let element">{{element.createdAt}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row;columns:displayedColumns;"></tr>
+    </table>
